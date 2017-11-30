@@ -120,6 +120,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "CPU Time Shring";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -129,6 +130,7 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "Thread - void () - ThreadStart";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ThreadStart_Click);
             // 
             // groupBox2
             // 
@@ -149,6 +151,12 @@
             this.button7.TabIndex = 1;
             this.button7.Text = "BackGroundWorker  xxxAsync()";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // groupBox3
             // 

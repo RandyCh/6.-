@@ -45,5 +45,56 @@ namespace Lab_06
         {
             this.Text = DateTime.Now.ToLongTimeString();
         }
+
+        private void ThreadStart_Click(object sender, EventArgs e)
+        {
+            Thread T1 = new Thread(new ThreadStart(LongTask2));///使用執行緒,不會完全卡死,程式的其他功能還可以動
+            //treadstart這種委派呼叫的方法為無回傳參數的method
+            //thread後面可接三種方法
+            T1.Start();
+        }
+        void LongTask2()
+        {
+            ///...
+            ///
+            Thread.Sleep(5000);
+            MessageBox.Show("done");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Thread T1 = new Thread(LongTask3);
+            T1.Start();
+
+            for(int i = 1; i <= 4000; i++)
+            {
+                Console.Write("1");
+            }
+        }
+        void LongTask3()
+        {
+            for (int i = 1; i <= 4000; i++)
+            {
+                Console.Write("3");
+            }
+
+        }
+        //=================================2.0
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.backgroundWorker1.RunWorkerAsync();//啟動dowork event
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //long task
+            Thread.Sleep(500);
+            e.Result = LongTask();//等到執行完成傳到runworkercompleted
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());//收到
+        }
     }
 }
